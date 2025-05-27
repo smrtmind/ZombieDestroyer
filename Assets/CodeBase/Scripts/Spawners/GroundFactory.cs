@@ -27,6 +27,8 @@ namespace CodeBase.Scripts.Spawners
         private Ground _lastSpawnedGroundPlate;
         private CancellationTokenSource _cts;
 
+        public static event Action<Ground> OnNewGroundPlateSpawned;
+
         [Inject]
         private void Construct(ObjectPool objectPool, MatchManager matchManager)
         {
@@ -113,6 +115,8 @@ namespace CodeBase.Scripts.Spawners
 
             _lastSpawnedGroundPlate = GetNewGroundPlate();
             _lastSpawnedGroundPlate.transform.position = new Vector3(0f, 0f, newPosisitonByZ);
+
+            OnNewGroundPlateSpawned?.Invoke(_lastSpawnedGroundPlate);
         }
 
         private void SpawnFirstGroundPlate()

@@ -122,8 +122,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 3742499236548187997}
-  acceleration: 35
-  maxSpeed: 15
+  acceleration: 25
+  maxSpeed: 10
 --- !u!1 &4969008186514936374
 GameObject:
   m_ObjectHideFlags: 0
