@@ -1,23 +1,19 @@
-using CodeBase.Scripts.CameraLogic;
+using CodeBase.Scripts.Managers;
+using Unavinar.Pooling;
 using UnityEngine;
-using Zenject;
 using static CodeBase.Scripts.Utils.Enums;
 
-namespace CodeBase.Scripts.Managers
+namespace CodeBase.Scripts.Characters.Vehicles
 {
-    public class GameplayManager : MonoBehaviour
+    public class Vehicle : PoolableMonoBehaviour
     {
-        private CameraController _cameraController;
-
-        [Inject]
-        private void Construct(CameraController cameraController)
-        {
-            _cameraController = cameraController;
-        }
+        [SerializeField] private VehicleMovement vehicleMovement;
 
         private void OnEnable()
         {
             GameManager.OnAfterStateChanged += OnAfterStateChangedHandler;
+
+            vehicleMovement.enabled = false;
         }
 
         private void OnDisable()
@@ -29,7 +25,9 @@ namespace CodeBase.Scripts.Managers
         {
             if (state != GameState.Gameplay) return;
 
-            _cameraController.SwitchCamera(VcamType.Gameplay);
+            Invoke(nameof(Test), 3f);
         }
+
+        private void Test() => vehicleMovement.enabled = true;
     }
 }

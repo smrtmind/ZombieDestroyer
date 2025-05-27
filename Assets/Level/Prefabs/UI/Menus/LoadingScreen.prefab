@@ -425,7 +425,7 @@ MonoBehaviour:
   hideAlpha: 0
   <State>k__BackingField: 0
   filler: {fileID: 7811300581351413876}
-  loadingDuration: 3
+  loadingDuration: 5
 --- !u!225 &7463118919568143234 stripped
 CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 3696387895787770893, guid: 164d1ca59f9d0fe40be1f156215c3591,
