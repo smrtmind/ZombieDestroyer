@@ -510,7 +510,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bc91b0d6c0e91d4a8f5e596cb63ea8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dieFxPrefab: {fileID: 0}
+  dieFxPrefab: {fileID: 1867173780955829508, guid: 04286fa52dcc6a54ab7cd11903a97849,
+    type: 3}
   detector: {fileID: 81440929810886652}
   enemyAi: {fileID: 4226138223405764086}
   damageableObject: {fileID: 519808961119469747}

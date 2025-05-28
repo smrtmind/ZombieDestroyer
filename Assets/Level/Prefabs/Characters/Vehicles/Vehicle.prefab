@@ -212,6 +212,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 099b0e768762fae4cba5b945ed33d1f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dieFxPrefab: {fileID: 4139582897561160669, guid: 903b723dfd60b334dbeba048a0c82893,
+    type: 3}
   vehicleMovement: {fileID: 4643972387947591601}
   weaponRotator: {fileID: 7589509327636494417}
   touchController: {fileID: 5641227678447008581}
