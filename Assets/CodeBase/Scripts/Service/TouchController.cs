@@ -13,8 +13,8 @@ namespace CodeBase.Scripts.Service
         private Camera _mainCamera;
         private EventSystem _eventSystem;
 
-        public static event Action OnTouched;
-        public static event Action OnReleased;
+        public event Action OnTouched;
+        public event Action OnReleased;
 
         [Inject]
         private void Construct(CameraController cameraController)

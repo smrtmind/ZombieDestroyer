@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 5839104194537022685}
   - component: {fileID: 5641227678447008581}
   - component: {fileID: 7589509327636494417}
+  - component: {fileID: 6903959749168916800}
   m_Layer: 10
-  m_Name: TouchControl
+  m_Name: WeaponControls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,6 +61,22 @@ MonoBehaviour:
   touchController: {fileID: 5641227678447008581}
   pivot: {fileID: 7381743837465139760}
   maxRotationAngle: 45
+--- !u!114 &6903959749168916800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703793040579027352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9beffeb21e810da4f9ad070f172e1909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 3670015887715053353}
+  damageProvider: {fileID: 7756776443292502098}
+  touchController: {fileID: 5641227678447008581}
+  shootDelay: 0.25
 --- !u!1 &1053724573257776650
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,7 +235,7 @@ Transform:
   m_GameObject: {fileID: 4969008186514936374}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.75, z: 1.25}
+  m_LocalPosition: {x: 0, y: 0.7, z: 1.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -291,6 +308,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16e1dd062b073c44490b513c24f3018e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _target:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &7339730008778693492
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,6 +321,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2032087078551782821}
   - component: {fileID: 90613567182250622}
+  - component: {fileID: 7756776443292502098}
   m_Layer: 10
   m_Name: Damageable
   m_TagString: Untagged
@@ -337,6 +358,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MaxHealth>k__BackingField: 200
   <Health>k__BackingField: 200
+--- !u!114 &7756776443292502098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7339730008778693492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c09859e56cab16948863b98430997ebd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <DefaultDamage>k__BackingField: 0
+  <Damage>k__BackingField: 0
+  <DefaultCritChance>k__BackingField: 0
+  <CritChance>k__BackingField: 0
+  <DefaultCritDamage>k__BackingField: 100
+  <CritDamage>k__BackingField: 0
 --- !u!1001 &1122065338107046549
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -495,3 +534,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7998732276582941234}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3670015887715053353 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6768822970571173147, guid: d79498edb26adb147a0c7c0bfa328588,
+    type: 3}
+  m_PrefabInstance: {fileID: 7998732276582941234}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2f66b6557aae2c4993ca3e0fd73370e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

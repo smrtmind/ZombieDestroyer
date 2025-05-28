@@ -31,6 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1148521207028143385}
+  - {fileID: 1753099916166439257}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!114 &6768822970571173147
@@ -45,9 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f66b6557aae2c4993ca3e0fd73370e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 0}
-  shootFx: {fileID: 0}
   shootPoint: {fileID: 1753099916166439257}
+  projectile: {fileID: 2206880830168046784, guid: 1c75fab329566164e83a49ba4f85932f,
+    type: 3}
+  shootFx: {fileID: 0}
+  aimDistance: 10
 --- !u!1 &468926182589531773
 GameObject:
   m_ObjectHideFlags: 0
@@ -78,7 +81,6 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8265590617126542352}
-  - {fileID: 1753099916166439257}
   m_Father: {fileID: 4738061421932262321}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &1346440508410047238
@@ -106,11 +108,11 @@ Transform:
   m_GameObject: {fileID: 1346440508410047238}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -5.01, z: 3.35}
+  m_LocalPosition: {x: 0, y: 1.1, z: 1.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1148521207028143385}
+  m_Father: {fileID: 4738061421932262321}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8448752501214968827
 PrefabInstance:
