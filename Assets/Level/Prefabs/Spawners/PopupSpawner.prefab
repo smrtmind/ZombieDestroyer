@@ -48,4 +48,5 @@ MonoBehaviour:
     type: 3}
   positionOffsetY: 2
   randomRangeMultiplier: {x: 0.25, y: 0.25}
-  popupColor: {r: 1, g: 1, b: 1, a: 1}
+  enemyPopupColor: {r: 1, g: 1, b: 1, a: 1}
+  vehiclePopupColor: {r: 1, g: 0, b: 0, a: 1}

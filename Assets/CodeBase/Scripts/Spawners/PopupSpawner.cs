@@ -18,7 +18,8 @@ namespace CodeBase.Scripts.Spawners
         [SerializeField] private Vector2 randomRangeMultiplier = Vector2.one;
 
         [Space]
-        [SerializeField] private Color popupColor = Color.white;
+        [SerializeField] private Color enemyPopupColor = Color.white;
+        [SerializeField] private Color vehiclePopupColor = Color.red;
 
         private ObjectPool _objectPool;
         #endregion
@@ -52,7 +53,11 @@ namespace CodeBase.Scripts.Spawners
             var actualDamageValue = Mathf.RoundToInt(Mathf.Abs(result.DealtDamage));
             var text = damageIsNegative ? $"{actualDamageValue}" : $"+{actualDamageValue}";
 
-            popUp.Setup(text, popupColor);
+            var actualColor = result.Victim is VehicleDamageableObject
+                ? vehiclePopupColor
+                : enemyPopupColor;
+
+            popUp.Setup(text, actualColor);
             popUp.Run();
         }
 

@@ -1,5 +1,6 @@
 using CodeBase.Scripts.Damageable;
 using CodeBase.Scripts.Managers;
+using CodeBase.Scripts.Service;
 using CodeBase.Scripts.Weapons;
 using Unavinar.Pooling;
 using UnityEngine;
@@ -10,20 +11,26 @@ namespace CodeBase.Scripts.Characters.Vehicles
     public class Vehicle : PoolableMonoBehaviour
     {
         [SerializeField] private VehicleMovement vehicleMovement;
-        [SerializeField] private WeaponRotator WeaponRotator;
-        [field: SerializeField] public DamageableObject DamageableObject { get; private set; }
+        [SerializeField] private WeaponRotator weaponRotator;
+        [SerializeField] private TouchController touchController;
+        [field: SerializeField] public VehicleDamageableObject DamageableObject { get; private set; }
 
         private void OnEnable()
         {
-            GameManager.OnAfterStateChanged += OnAfterStateChangedHandler;
-
-            vehicleMovement.enabled = false;
-            WeaponRotator.enabled = false;
+            Subscribe();
+            OnDiedHandler();
         }
 
-        private void OnDisable()
+        private void Subscribe()
+        {
+            GameManager.OnAfterStateChanged += OnAfterStateChangedHandler;
+            DamageableObject.OnDied += OnDiedHandler;
+        }
+
+        private void Unsubscribe()
         {
             GameManager.OnAfterStateChanged -= OnAfterStateChangedHandler;
+            DamageableObject.OnDied -= OnDiedHandler;
         }
 
         private void OnAfterStateChangedHandler(GameState state)
@@ -31,7 +38,20 @@ namespace CodeBase.Scripts.Characters.Vehicles
             if (state != GameState.Gameplay) return;
 
             vehicleMovement.enabled = true;
-            WeaponRotator.enabled = true;
+            weaponRotator.enabled = true;
+            touchController.enabled = true;
+        }
+
+        private void OnDiedHandler()
+        {
+            vehicleMovement.enabled = false;
+            weaponRotator.enabled = false;
+            touchController.enabled = false;
+        }
+
+        private void OnDisable()
+        {
+            Unsubscribe();
         }
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace CodeBase.Scripts.Damageable
 {
-    public class DamageableObject : MonoBehaviour, IDamageable
+    public abstract class DamageableObject : MonoBehaviour, IDamageable
     {
         [field: SerializeField, Min(0f)] public float MaxHealth { get; protected set; }
         [field: SerializeField, Min(0f)] public float Health { get; protected set; }

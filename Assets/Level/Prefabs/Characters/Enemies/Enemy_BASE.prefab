@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4975133601502964416}
   - component: {fileID: 3574502179041750955}
   - component: {fileID: 8631734991571044271}
-  - component: {fileID: 7778219121277815347}
+  - component: {fileID: 6080073691325116384}
   - component: {fileID: 1759399893799111974}
   - component: {fileID: 3197274765757800709}
   - component: {fileID: 5009900248593396925}
@@ -92,7 +92,7 @@ CapsuleCollider:
   m_Height: 2.25
   m_Direction: 1
   m_Center: {x: 0, y: 1.125, z: 0}
---- !u!114 &7778219121277815347
+--- !u!114 &6080073691325116384
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1204220483645481451}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a87c02491579514e941526eec3e7cb1, type: 3}
+  m_Script: {fileID: 11500000, guid: a87c2b57f0d305a41a80fac668ecab35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <MaxHealth>k__BackingField: 15
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f5837e95d026fd47b1bc3294647cf92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageableObject: {fileID: 7778219121277815347}
+  damageableObject: {fileID: 6080073691325116384}
   emissionController: {fileID: 5009900248593396925}
   damageColor: {r: 1, g: 1, b: 1, a: 1}
   blinkDuration: 0.2
@@ -241,7 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93c0028b77b662e449b2cb66527e3e74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagableObject: {fileID: 7778219121277815347}
+  damagableObject: {fileID: 6080073691325116384}
   cacheSize: 50
   detectionRadius: 10
   offset: {x: 0, y: 0, z: 0}

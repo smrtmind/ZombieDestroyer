@@ -14,44 +14,54 @@ namespace CodeBase.Scripts.Managers
         public Vehicle ActiveVehicle { get; private set; }
 
         private ObjectPool _objectPool;
+        private GameManager _gameManager;
         private CameraController _cameraController;
 
         [Inject]
-        private void Construct(ObjectPool objectPool, CameraController cameraController)
+        private void Construct(ObjectPool objectPool, GameManager gameManager, CameraController cameraController)
         {
             _objectPool = objectPool;
+            _gameManager = gameManager;
             _cameraController = cameraController;
         }
 
         private void OnEnable()
         {
-            GameManager.OnAfterStateChanged += OnAfterStateChangedHandler;
+            SpawnVehicle();
+            Subscribe();
         }
 
-        private void OnDisable()
+        private void Subscribe()
+        {
+            GameManager.OnAfterStateChanged += OnAfterStateChangedHandler;
+            ActiveVehicle.DamageableObject.OnDied += EndMatch;
+        }
+
+        private void Unsubscribe()
         {
             GameManager.OnAfterStateChanged -= OnAfterStateChangedHandler;
+            ActiveVehicle.DamageableObject.OnDied -= EndMatch;
         }
 
         private void OnAfterStateChangedHandler(GameState state)
         {
-            switch (state)
-            {
-                case GameState.Loading:
-                    SpawnVehicle();
-                    break;
+            if (state != GameState.Gameplay) return;
 
-                case GameState.Gameplay:
-                    _cameraController.SwitchCamera(VcamType.Gameplay);
-                    _cameraController.SetFollowTarget(ActiveVehicle.transform);
-                    break;
-            }
+            _cameraController.SwitchCamera(VcamType.Gameplay);
+            _cameraController.SetFollowTarget(ActiveVehicle.transform);
         }
+
+        private void EndMatch() => _gameManager.ChangeState(GameState.Defeat);
 
         private void SpawnVehicle()
         {
             ActiveVehicle = _objectPool.Get(vehiclePrefab);
             ActiveVehicle.transform.position = Vector3.zero;
+        }
+
+        private void OnDisable()
+        {
+            Unsubscribe();
         }
     }
 }

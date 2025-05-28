@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 818522779416543224}
   - component: {fileID: 4643972387947591601}
   - component: {fileID: 2581085459870669435}
-  - component: {fileID: 3831160055888473797}
+  - component: {fileID: 5591459302574416023}
   - component: {fileID: 7492166880213012535}
   - component: {fileID: 3765212268222787197}
   m_Layer: 10
@@ -213,8 +213,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehicleMovement: {fileID: 4643972387947591601}
-  WeaponRotator: {fileID: 7589509327636494417}
-  <DamageableObject>k__BackingField: {fileID: 3831160055888473797}
+  weaponRotator: {fileID: 7589509327636494417}
+  touchController: {fileID: 5641227678447008581}
+  <DamageableObject>k__BackingField: {fileID: 5591459302574416023}
 --- !u!114 &4643972387947591601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,7 +251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <DefaultDamage>k__BackingField: 5
   <Damage>k__BackingField: 5
---- !u!114 &3831160055888473797
+--- !u!114 &5591459302574416023
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -259,11 +260,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1801607678570064664}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a87c02491579514e941526eec3e7cb1, type: 3}
+  m_Script: {fileID: 11500000, guid: bed40852519e8ef4284bbe108519b3ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MaxHealth>k__BackingField: 200
-  <Health>k__BackingField: 200
+  <MaxHealth>k__BackingField: 50
+  <Health>k__BackingField: 50
 --- !u!114 &7492166880213012535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,7 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f5837e95d026fd47b1bc3294647cf92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageableObject: {fileID: 3831160055888473797}
+  damageableObject: {fileID: 5591459302574416023}
   emissionController: {fileID: 3765212268222787197}
   damageColor: {r: 1, g: 0, b: 0, a: 1}
   blinkDuration: 0.2

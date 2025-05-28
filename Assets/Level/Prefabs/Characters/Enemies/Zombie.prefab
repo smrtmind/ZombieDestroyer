@@ -462,24 +462,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93c0028b77b662e449b2cb66527e3e74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1231825250772160843 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4777803791327526424, guid: b59d63a87943fd947894336d5694baa4,
-    type: 3}
-  m_PrefabInstance: {fileID: 6005120958509543251}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4082425812129457504 stripped
+--- !u!114 &519808961119469747 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7778219121277815347, guid: b59d63a87943fd947894336d5694baa4,
+  m_CorrespondingSourceObject: {fileID: 6080073691325116384, guid: b59d63a87943fd947894336d5694baa4,
     type: 3}
   m_PrefabInstance: {fileID: 6005120958509543251}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4890972519043354296}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a87c02491579514e941526eec3e7cb1, type: 3}
+  m_Script: {fileID: 11500000, guid: a87c2b57f0d305a41a80fac668ecab35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1231825250772160843 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4777803791327526424, guid: b59d63a87943fd947894336d5694baa4,
+    type: 3}
+  m_PrefabInstance: {fileID: 6005120958509543251}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &4226138223405764086 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7633667215693963941, guid: b59d63a87943fd947894336d5694baa4,
@@ -510,10 +510,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bc91b0d6c0e91d4a8f5e596cb63ea8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dieFxPrefab: {fileID: 0}
   detector: {fileID: 81440929810886652}
   enemyAi: {fileID: 4226138223405764086}
-  dieFxPrefab: {fileID: 0}
-  damageableObject: {fileID: 4082425812129457504}
+  damageableObject: {fileID: 519808961119469747}
   damageProvider: {fileID: 5421451388372083317}
   triggerObserver: {fileID: 8124863099335993817}
 --- !u!114 &5421451388372083317 stripped

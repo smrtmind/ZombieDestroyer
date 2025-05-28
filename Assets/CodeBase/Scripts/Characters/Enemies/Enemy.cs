@@ -11,9 +11,9 @@ namespace CodeBase.Scripts.Characters.Enemies
     public abstract class Enemy : PoolableMonoBehaviour
     {
         [Header("Components")]
+        [SerializeField] private PoolableParticle dieFxPrefab;
         [SerializeField] private Detector detector;
         [SerializeField] private EnemyAI enemyAi;
-        [SerializeField] private PoolableParticle dieFxPrefab;
         [SerializeField] protected DamageableObject damageableObject;
         [SerializeField] protected DamageProvider damageProvider;
 
