@@ -343,6 +343,12 @@ MonoBehaviour:
   animator: {fileID: 3796516277567270983}
   detector: {fileID: 81440929810886652}
   walkTrigger: IsWalking
+--- !u!137 &5893803515341610664 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7307535121243759794, guid: 79089e0a94feaab4e860068094076387,
+    type: 3}
+  m_PrefabInstance: {fileID: 3792993421812988442}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6005120958509543251
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -406,6 +412,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6516613640713115503, guid: b59d63a87943fd947894336d5694baa4,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185653087836550034, guid: b59d63a87943fd947894336d5694baa4,
+        type: 3}
+      propertyPath: renderers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185653087836550034, guid: b59d63a87943fd947894336d5694baa4,
+        type: 3}
+      propertyPath: renderers.Array.data[0]
+      value: 
+      objectReference: {fileID: 5893803515341610664}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

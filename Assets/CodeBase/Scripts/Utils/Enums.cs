@@ -16,5 +16,13 @@ namespace CodeBase.Scripts.Utils
             Lobby,
             Gameplay
         }
+
+        public enum Axis : byte
+        {
+            None = 0,
+            X = 1 << 0,
+            Y = 1 << 1,
+            Z = 1 << 2
+        }
     }
 }

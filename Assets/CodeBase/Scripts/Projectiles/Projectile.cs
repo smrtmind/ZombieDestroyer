@@ -19,8 +19,8 @@ namespace CodeBase.Scripts.Projectiles
         [SerializeField, Min(0f)] protected float speed = 3f;
         [SerializeField, Min(0.01f)] private float targetReachTolerance = 0.01f;
 
-        protected CameraController _cameraController;
         protected ObjectPool _objectPool;
+        protected Camera _mainCamera;
         protected GameObject _damagerObject;
         protected Vector3 _targetPosition;
 
@@ -28,10 +28,10 @@ namespace CodeBase.Scripts.Projectiles
         #endregion
 
         [Inject]
-        private void Construct(CameraController cameraController, ObjectPool objectPool)
+        private void Construct(ObjectPool objectPool, CameraController cameraController)
         {
-            _cameraController = cameraController;
             _objectPool = objectPool;
+            _mainCamera = cameraController.MainCamera;
         }
 
         protected virtual void OnEnable()
@@ -55,6 +55,9 @@ namespace CodeBase.Scripts.Projectiles
         {
             if (Vector3.Distance(transform.position, _targetPosition) < targetReachTolerance)
                 OnReachedTargetPosition();
+
+            if (IsOutOfScreen())
+                Release();
         }
 
         private void OnAfterStateChangedHandler(GameState state)
@@ -101,6 +104,15 @@ namespace CodeBase.Scripts.Projectiles
             var damagable = triggerCollider.GetComponent<IDamageable>();
             if (damagable != null)
                 DoEffect(damagable);
+        }
+
+        private bool IsOutOfScreen()
+        {
+            Vector3 viewportPos = _mainCamera.WorldToViewportPoint(transform.position);
+
+            return viewportPos.x < 0 || viewportPos.x > 1 ||
+                viewportPos.y < 0 || viewportPos.y > 1 ||
+                viewportPos.z < 0;
         }
 
         protected virtual void OnDisable()
