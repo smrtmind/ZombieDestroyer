@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4513693941154204167}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 3742499236548187997}
   - component: {fileID: 818522779416543224}
   - component: {fileID: 4643972387947591601}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Vehicle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,6 +124,12 @@ MonoBehaviour:
   rb: {fileID: 3742499236548187997}
   acceleration: 25
   maxSpeed: 10
+  delayBetweenTurns: 10
+  xRange: 1
+  turnDuration: 3
+  maxTurnAngle: 3
+  rotationReturnSpeed: 25
+  roadHalfWidth: 4
 --- !u!1 &4969008186514936374
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +139,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7381743837465139760}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TurretPoint
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
@@ -167,7 +173,7 @@ GameObject:
   - component: {fileID: 3123213000356725697}
   - component: {fileID: 2014638004695226582}
   - component: {fileID: 2422066504627544283}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -290,6 +296,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Car
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 239912a0a06b80840bb39846ad4f85a6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -313,6 +324,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Turret
+      objectReference: {fileID: 0}
+    - target: {fileID: 132731312954496016, guid: d79498edb26adb147a0c7c0bfa328588,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 468926182589531773, guid: d79498edb26adb147a0c7c0bfa328588,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1346440508410047238, guid: d79498edb26adb147a0c7c0bfa328588,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4738061421932262321, guid: d79498edb26adb147a0c7c0bfa328588,
         type: 3}
@@ -363,6 +389,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8790628943508096682, guid: d79498edb26adb147a0c7c0bfa328588,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
