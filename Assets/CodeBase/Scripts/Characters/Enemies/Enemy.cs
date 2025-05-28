@@ -1,4 +1,6 @@
+using CodeBase.Scripts.Characters.Enemies.AI;
 using CodeBase.Scripts.Damageable;
+using CodeBase.Scripts.Detectors;
 using CodeBase.Scripts.Managers;
 using Unavinar.Pooling;
 using UnityEngine;
@@ -8,6 +10,9 @@ namespace CodeBase.Scripts.Characters.Enemies
 {
     public abstract class Enemy : PoolableMonoBehaviour
     {
+        [Header("Components")]
+        [SerializeField] private Detector detector;
+        [SerializeField] private EnemyAI enemyAi;
         [SerializeField] private PoolableParticle dieFxPrefab;
         [SerializeField] protected DamageableObject damageableObject;
         [SerializeField] protected DamageProvider damageProvider;
@@ -29,13 +34,21 @@ namespace CodeBase.Scripts.Characters.Enemies
 
         protected virtual void Subscribe()
         {
+            detector.OnTargetDetected += OnTargetDetectedHandler;
+            detector.OnTargetLost += OnTargetLostHandler;
             damageableObject.OnDied += OnDiedHandler;
         }
 
         protected virtual void Unsubscribe()
         {
+            detector.OnTargetDetected -= OnTargetDetectedHandler;
+            detector.OnTargetLost -= OnTargetLostHandler;
             damageableObject.OnDied -= OnDiedHandler;
         }
+
+        private void OnTargetDetectedHandler() => enemyAi.SwitchTo<FollowState>();
+
+        private void OnTargetLostHandler() => enemyAi.SwitchTo<PatrolState>();
 
         protected void OnDiedHandler()
         {

@@ -11,10 +11,11 @@ namespace CodeBase.Scripts.Weapons
         {
             base.Shoot(targetPosition, damage);
 
-            _projectile = GetProjectile();
-
             Vector3 shootDirection = shootPoint.forward;
+
+            _projectile = GetProjectile();
             _projectile.Set(gameObject, shootPoint.position + shootDirection * aimDistance, damage);
+            _projectile.transform.rotation = Quaternion.LookRotation(shootDirection);
         }
     }
 }
