@@ -1,3 +1,4 @@
+using CodeBase.Scripts.Damageable;
 using CodeBase.Scripts.Managers;
 using CodeBase.Scripts.Weapons;
 using Unavinar.Pooling;
@@ -10,6 +11,7 @@ namespace CodeBase.Scripts.Characters.Vehicles
     {
         [SerializeField] private VehicleMovement vehicleMovement;
         [SerializeField] private WeaponRotator WeaponRotator;
+        [field: SerializeField] public DamageableObject DamageableObject { get; private set; }
 
         private void OnEnable()
         {

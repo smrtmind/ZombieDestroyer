@@ -7,14 +7,14 @@ namespace CodeBase.Scripts.Weapons
     {
         protected Projectile _projectile;
 
-        public override void Shoot(Vector3 targetPosition, float damage, bool isCritical)
+        public override void Shoot(Vector3 targetPosition, float damage)
         {
-            base.Shoot(targetPosition, damage, isCritical);
+            base.Shoot(targetPosition, damage);
 
             _projectile = GetProjectile();
 
             Vector3 shootDirection = shootPoint.forward;
-            _projectile.Set(gameObject, shootPoint.position + shootDirection * aimDistance, damage, isCritical);
+            _projectile.Set(gameObject, shootPoint.position + shootDirection * aimDistance, damage);
         }
     }
 }

@@ -20,9 +20,9 @@ namespace CodeBase.Scripts.Projectiles
             transform.position += _direction * step;
         }
 
-        public override void Set(GameObject damagerObject, Vector3 targetPosition, float damage, bool isCritical)
+        public override void Set(GameObject damagerObject, Vector3 targetPosition, float damage)
         {
-            base.Set(damagerObject, targetPosition, damage, isCritical);
+            base.Set(damagerObject, targetPosition, damage);
 
             _direction = (_targetPosition - transform.position).normalized;
             RotateTowardsTarget();

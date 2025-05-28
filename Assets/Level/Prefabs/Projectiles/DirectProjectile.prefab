@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1564932076341089379}
   - component: {fileID: 2785187107031381773}
   - component: {fileID: 8650676703951059983}
-  - component: {fileID: 1463447754266974817}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -84,27 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &1463447754266974817
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2896563037968194273}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &6113663449515426586
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -113,6 +91,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 902538475886434042, guid: 46a98db150ec3b849849c7a1284b6506,
+        type: 3}
+      propertyPath: m_Radius
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7753915310608428000, guid: 46a98db150ec3b849849c7a1284b6506,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -218,7 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerObserver: {fileID: 2855575324688329882}
   fxOnContact: {fileID: 0}
-  speed: 75
+  speed: 25
   targetReachTolerance: 0.01
 --- !u!4 &7518023199248023268 stripped
 Transform:

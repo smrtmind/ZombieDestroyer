@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caba4a402f025034396c8158a460f073, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 7067757613738580448, guid: ae69f45d28151df4fab6abd5e9a95f16,
+  enemyPrefab: {fileID: 921332888904105448, guid: 855eff8410b287340908dcf79f17e372,
     type: 3}
   enemiesToSpawnPerGroundPlate: 20
   enemiesBehindVehiclePositionZ: 10

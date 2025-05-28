@@ -24,7 +24,6 @@ namespace CodeBase.Scripts.Projectiles
         protected GameObject _damagerObject;
         protected Vector3 _targetPosition;
 
-        protected bool _isCritical;
         protected float _damage;
         #endregion
 
@@ -69,12 +68,11 @@ namespace CodeBase.Scripts.Projectiles
             }
         }
 
-        public virtual void Set(GameObject damagerObject, Vector3 targetPosition, float damage, bool isCritical)
+        public virtual void Set(GameObject damagerObject, Vector3 targetPosition, float damage)
         {
             _damagerObject = damagerObject;
             _targetPosition = targetPosition;
             _damage = damage;
-            _isCritical = isCritical;
         }
 
         protected void RotateTowardsTarget()

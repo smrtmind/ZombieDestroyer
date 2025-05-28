@@ -32,7 +32,7 @@ namespace CodeBase.Scripts.Weapons
 
         protected virtual void Unsubscribe() { }
 
-        public virtual void Shoot(Vector3 targetPosition, float damage, bool isCritical)
+        public virtual void Shoot(Vector3 targetPosition, float damage)
         {
             ShootFx();
         }
