@@ -25,9 +25,7 @@ namespace CodeBase.Scripts.Characters.Vehicles
         {
             if (state != GameState.Gameplay) return;
 
-            Invoke(nameof(Test), 3f);
+            vehicleMovement.enabled = true;
         }
-
-        private void Test() => vehicleMovement.enabled = true;
     }
 }
