@@ -412,6 +412,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5009900248593396925, guid: b59d63a87943fd947894336d5694baa4,
+        type: 3}
+      propertyPath: renderers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5009900248593396925, guid: b59d63a87943fd947894336d5694baa4,
+        type: 3}
+      propertyPath: renderers.Array.data[0]
+      value: 
+      objectReference: {fileID: 5893803515341610664}
     - target: {fileID: 6516613640713115503, guid: b59d63a87943fd947894336d5694baa4,
         type: 3}
       propertyPath: m_ConstrainProportionsScale

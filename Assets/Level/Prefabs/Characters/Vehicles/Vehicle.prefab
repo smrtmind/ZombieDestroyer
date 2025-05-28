@@ -125,6 +125,8 @@ GameObject:
   - component: {fileID: 4643972387947591601}
   - component: {fileID: 2581085459870669435}
   - component: {fileID: 3831160055888473797}
+  - component: {fileID: 7492166880213012535}
+  - component: {fileID: 3765212268222787197}
   m_Layer: 10
   m_Name: Vehicle
   m_TagString: Untagged
@@ -262,6 +264,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MaxHealth>k__BackingField: 200
   <Health>k__BackingField: 200
+--- !u!114 &7492166880213012535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801607678570064664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f5837e95d026fd47b1bc3294647cf92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageableObject: {fileID: 3831160055888473797}
+  emissionController: {fileID: 3765212268222787197}
+  damageColor: {r: 1, g: 0, b: 0, a: 1}
+  blinkDuration: 0.2
+--- !u!114 &3765212268222787197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801607678570064664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90cea1b74c5bcfd40aa353c1fffcb26e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers:
+  - {fileID: 1753015001830176273}
+  - {fileID: 1008628897397564749}
+  defaultEmission: {r: 0, g: 0, b: 0, a: 1}
+  fadeDuration: 0.75
 --- !u!1 &4969008186514936374
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,6 +410,12 @@ PrefabInstance:
 --- !u!4 &583454778417958270 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 239912a0a06b80840bb39846ad4f85a6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1122065338107046549}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1753015001830176273 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 239912a0a06b80840bb39846ad4f85a6,
     type: 3}
   m_PrefabInstance: {fileID: 1122065338107046549}
   m_PrefabAsset: {fileID: 0}
@@ -555,6 +596,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d79498edb26adb147a0c7c0bfa328588, type: 3}
+--- !u!23 &1008628897397564749 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7133255421938034559, guid: d79498edb26adb147a0c7c0bfa328588,
+    type: 3}
+  m_PrefabInstance: {fileID: 7998732276582941234}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3369199820621001091 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4738061421932262321, guid: d79498edb26adb147a0c7c0bfa328588,

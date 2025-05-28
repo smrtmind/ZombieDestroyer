@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 8631734991571044271}
   - component: {fileID: 7778219121277815347}
   - component: {fileID: 1759399893799111974}
+  - component: {fileID: 3197274765757800709}
+  - component: {fileID: 5009900248593396925}
   - component: {fileID: 2564578165505590922}
   m_Layer: 11
   m_Name: Enemy_BASE
@@ -118,6 +120,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <DefaultDamage>k__BackingField: 5
   <Damage>k__BackingField: 5
+--- !u!114 &3197274765757800709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204220483645481451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f5837e95d026fd47b1bc3294647cf92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageableObject: {fileID: 7778219121277815347}
+  emissionController: {fileID: 5009900248593396925}
+  damageColor: {r: 1, g: 1, b: 1, a: 1}
+  blinkDuration: 0.2
+--- !u!114 &5009900248593396925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204220483645481451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90cea1b74c5bcfd40aa353c1fffcb26e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers: []
+  defaultEmission: {r: 0, g: 0, b: 0, a: 1}
+  fadeDuration: 0.75
 --- !u!114 &2564578165505590922
 MonoBehaviour:
   m_ObjectHideFlags: 0
