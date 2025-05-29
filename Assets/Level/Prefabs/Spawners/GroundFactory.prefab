@@ -46,5 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundPrefab: {fileID: 4716202347733474560, guid: 0b3dcc9ab6289aa43bd3bca6a34a578e,
     type: 3}
+  <TotalGroundPlates>k__BackingField: 5
   maxGroundPlatesAlive: 2
   distanceAheadOfPlayer: -30

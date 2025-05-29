@@ -57,6 +57,8 @@ namespace CodeBase.Scripts.Characters.Vehicles
 
                 case GameState.Victory:
                     StopLiveSimulation();
+
+                    fxSmokeContainer.SetActive(false);
                     break;
 
                 case GameState.Defeat:

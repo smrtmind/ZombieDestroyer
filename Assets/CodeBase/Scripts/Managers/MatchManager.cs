@@ -1,5 +1,6 @@
 using CodeBase.Scripts.CameraLogic;
 using CodeBase.Scripts.Characters.Vehicles;
+using CodeBase.Scripts.UI;
 using Unavinar.Pooling;
 using UnityEngine;
 using Zenject;
@@ -34,13 +35,16 @@ namespace CodeBase.Scripts.Managers
         private void Subscribe()
         {
             GameManager.OnAfterStateChanged += OnAfterStateChangedHandler;
-            ActiveVehicle.DamageableObject.OnDied += EndMatch;
+            LevelProgressBar.OnLevelCompleted += Win;
+            ActiveVehicle.DamageableObject.OnDied += Lose;
+
         }
 
         private void Unsubscribe()
         {
             GameManager.OnAfterStateChanged -= OnAfterStateChangedHandler;
-            ActiveVehicle.DamageableObject.OnDied -= EndMatch;
+            LevelProgressBar.OnLevelCompleted -= Win;
+            ActiveVehicle.DamageableObject.OnDied -= Lose;
         }
 
         private void OnAfterStateChangedHandler(GameState state)
@@ -51,7 +55,9 @@ namespace CodeBase.Scripts.Managers
             _cameraController.SetFollowTarget(ActiveVehicle.transform);
         }
 
-        private void EndMatch() => _gameManager.ChangeState(GameState.Defeat);
+        private void Win() => _gameManager.ChangeState(GameState.Victory);
+
+        private void Lose() => _gameManager.ChangeState(GameState.Defeat);
 
         private void SpawnVehicle()
         {

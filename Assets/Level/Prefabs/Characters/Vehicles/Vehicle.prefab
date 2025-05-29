@@ -109,7 +109,7 @@ MonoBehaviour:
   weapon: {fileID: 3670015887715053353}
   damageProvider: {fileID: 2581085459870669435}
   touchController: {fileID: 5641227678447008581}
-  shootDelay: 0.25
+  shootDelay: 0.2
 --- !u!1 &1053724573257776650
 GameObject:
   m_ObjectHideFlags: 0

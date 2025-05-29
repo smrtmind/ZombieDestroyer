@@ -1,6 +1,5 @@
 using CodeBase.Scripts.Environment;
 using CodeBase.Scripts.Managers;
-using CodeBase.Scripts.Utils;
 using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
@@ -17,15 +16,20 @@ namespace CodeBase.Scripts.Spawners
         [Header("Components")]
         [SerializeField] private Ground groundPrefab;
 
-        [Header("Parameters")]
+        [field: Header("Parameters")]
+        [field: SerializeField, Min(2)] public int TotalGroundPlates { get; private set; } = 10;
         [SerializeField, Min(1)] private int maxGroundPlatesAlive = 2;
         [SerializeField] private float distanceAheadOfPlayer = 30f;
+
+        public float GroundPlateSize => groundPrefab.Size.z;
 
         private readonly List<Ground> _activeGroundPlates = new();
         private ObjectPool _objectPool;
         private MatchManager _matchManager;
         private Ground _lastSpawnedGroundPlate;
         private CancellationTokenSource _cts;
+
+        private int _platesSpawnedCount;
 
         public static event Action<Ground> OnNewGroundPlateSpawned;
 
@@ -39,6 +43,8 @@ namespace CodeBase.Scripts.Spawners
         private void OnEnable()
         {
             Subscribe();
+
+            _platesSpawnedCount = 0;
             SpawnFirstGroundPlate();
         }
 
@@ -77,22 +83,15 @@ namespace CodeBase.Scripts.Spawners
 
         private async UniTaskVoid SpawnLoopAsync(CancellationToken token)
         {
-            try
+            while (!token.IsCancellationRequested && _platesSpawnedCount < TotalGroundPlates)
             {
-                while (!token.IsCancellationRequested)
+                if (ShouldSpawnNewSection())
                 {
-                    if (ShouldSpawnNewSection())
-                    {
-                        RemoveOldestGroundPlate();
-                        SpawnNewGroundPlate();
-                    }
-
-                    await UniTask.Yield(token);
+                    RemoveOldestGroundPlate();
+                    SpawnNewGroundPlate();
                 }
-            }
-            catch (OperationCanceledException)
-            {
-                Print.Log("Spawn Cancelled");
+
+                await UniTask.Yield(token);
             }
         }
 
@@ -115,6 +114,7 @@ namespace CodeBase.Scripts.Spawners
 
             _lastSpawnedGroundPlate = GetNewGroundPlate();
             _lastSpawnedGroundPlate.transform.position = new Vector3(0f, 0f, newPosisitonByZ);
+            _platesSpawnedCount++;
 
             OnNewGroundPlateSpawned?.Invoke(_lastSpawnedGroundPlate);
         }

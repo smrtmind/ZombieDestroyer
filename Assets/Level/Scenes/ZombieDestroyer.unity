@@ -197,6 +197,7 @@ MonoBehaviour:
   objectPool: {fileID: 7398414819866197928}
   gameManager: {fileID: 3056398523857455349}
   matchManager: {fileID: 2949689925286919660}
+  GroundFactory: {fileID: 1047111530}
   cameraController: {fileID: 8888821966117692795}
 --- !u!4 &765265618
 Transform:
@@ -253,6 +254,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5092546559123031030}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1047111530 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2296106019667207995, guid: 79032e78904cb0b4e8b40749fa3604b3,
+    type: 3}
+  m_PrefabInstance: {fileID: 5092546559123031030}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a7a0f4816077e041b5ac519cf9a9e9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1367359467
 GameObject:
   m_ObjectHideFlags: 0
@@ -826,6 +839,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 817802228490041249, guid: f984718327b3112478bb226a13ec90cd,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 817802228490041249, guid: f984718327b3112478bb226a13ec90cd,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3052487351009175363, guid: f984718327b3112478bb226a13ec90cd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -874,6 +897,21 @@ PrefabInstance:
     - target: {fileID: 3052487351009175363, guid: f984718327b3112478bb226a13ec90cd,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7282873612825723212, guid: f984718327b3112478bb226a13ec90cd,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7282873612825723212, guid: f984718327b3112478bb226a13ec90cd,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7282873612825723212, guid: f984718327b3112478bb226a13ec90cd,
+        type: 3}
+      propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
