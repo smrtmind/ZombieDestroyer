@@ -1,11 +1,17 @@
+using CodeBase.Scripts.Characters.Vehicles;
 using UnityEngine;
 
 namespace CodeBase.Scripts.Damageable
 {
     public class DamageProvider : MonoBehaviour
     {
-        [field: SerializeField, Min(0f)] public float DefaultDamage { get; private set; }
-        [field: SerializeField, Min(0f)] public float Damage { get; private set; }
+        [Header("Data")]
+        [SerializeField] private UnitParametersDataStorage dataStorage;
+
+        private UnitParametersData Data => dataStorage.UnitData;
+
+        public float DefaultDamage => Data.Damage;
+        public float Damage { get; private set; }
 
         private void OnEnable()
         {

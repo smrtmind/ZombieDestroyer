@@ -5,20 +5,13 @@ namespace CodeBase.Scripts.Characters.Vehicles
     public class VehicleMovement : MonoBehaviour
     {
         #region Variables
-        [Header("Forward Movement")]
+        [Header("Data")]
+        [SerializeField] private VehicleMovementDataStorage dataStorage;
+
+        [Header("Components")]
         [SerializeField] private Rigidbody rb;
-        [SerializeField, Min(1f)] private float acceleration = 15f;
-        [SerializeField, Min(1f)] private float maxSpeed = 20f;
 
-        [Header("Turn Settings")]
-        [SerializeField, Min(1f)] private float delayBetweenTurns = 2f;
-        [SerializeField, Min(1f)] private float xRange = 3f;
-        [SerializeField, Min(0.1f)] private float turnDuration = 0.6f;
-        [SerializeField, Min(2f)] private float maxAllowedXShift = 4f;
-
-        [Header("Rotation Settings")]
-        [SerializeField] private float maxTurnAngle = 25f;
-        [SerializeField, Min(0.1f)] private float rotationReturnSpeed = 5f;
+        private VehicleMovementData Data => dataStorage.MovementData;
 
         private bool _canMove;
         private float _nextTurnTime;
@@ -44,18 +37,18 @@ namespace CodeBase.Scripts.Characters.Vehicles
 
         private void Init()
         {
-            _nextTurnTime = Time.time + delayBetweenTurns;
+            _nextTurnTime = Time.time + Data.DelayBetweenTurns;
             _targetX = transform.position.x;
         }
 
         private void MoveForward()
         {
-            rb.AddForce(transform.forward * acceleration, ForceMode.Acceleration);
+            rb.AddForce(transform.forward * Data.Acceleration, ForceMode.Acceleration);
 
             Vector3 horizontalVelocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-            if (horizontalVelocity.magnitude > maxSpeed)
+            if (horizontalVelocity.magnitude > Data.MaxSpeed)
             {
-                Vector3 clampedVelocity = horizontalVelocity.normalized * maxSpeed;
+                Vector3 clampedVelocity = horizontalVelocity.normalized * Data.MaxSpeed;
                 rb.velocity = new Vector3(clampedVelocity.x, rb.velocity.y, clampedVelocity.z);
             }
         }
@@ -67,16 +60,16 @@ namespace CodeBase.Scripts.Characters.Vehicles
 
             if (_isTurning)
             {
-                float t = (Time.time - _startTurnTime) / turnDuration;
+                float t = (Time.time - _startTurnTime) / Data.TurnDuration;
                 if (t >= 1f)
                 {
                     t = 1f;
                     _isTurning = false;
-                    _nextTurnTime = Time.time + delayBetweenTurns;
+                    _nextTurnTime = Time.time + Data.DelayBetweenTurns;
                 }
 
                 float newX = Mathf.Lerp(_startX, _targetX, t);
-                newX = Mathf.Clamp(newX, -xRange, xRange);
+                newX = Mathf.Clamp(newX, -Data.RangeX, Data.RangeX);
 
                 Vector3 newPos = new Vector3(newX, rb.position.y, rb.position.z);
                 rb.MovePosition(newPos);
@@ -88,8 +81,8 @@ namespace CodeBase.Scripts.Characters.Vehicles
             _startTurnTime = Time.time;
             _startX = rb.position.x;
 
-            float minTargetX = Mathf.Max(-maxAllowedXShift, _startX - xRange);
-            float maxTargetX = Mathf.Min(maxAllowedXShift, _startX + xRange);
+            float minTargetX = Mathf.Max(-Data.MaxAllowedXShift, _startX - Data.RangeX);
+            float maxTargetX = Mathf.Min(Data.MaxAllowedXShift, _startX + Data.RangeX);
 
             do
             {
@@ -106,17 +99,17 @@ namespace CodeBase.Scripts.Characters.Vehicles
 
             if (_isTurning)
             {
-                float t = (Time.time - _startTurnTime) / turnDuration;
+                float t = (Time.time - _startTurnTime) / Data.TurnDuration;
                 t = Mathf.Clamp01(t);
 
                 float easing = Mathf.Sin(t * Mathf.PI);
 
                 float turnDirection = Mathf.Sign(_targetX - _startX);
-                targetYAngle = turnDirection * easing * maxTurnAngle;
+                targetYAngle = turnDirection * easing * Data.MaxTurnAngle;
             }
 
             float currentY = transform.eulerAngles.y;
-            float newY = Mathf.LerpAngle(currentY, targetYAngle, rotationReturnSpeed * Time.fixedDeltaTime);
+            float newY = Mathf.LerpAngle(currentY, targetYAngle, Data.RotationReturnSpeed * Time.fixedDeltaTime);
             transform.rotation = Quaternion.Euler(0f, newY, 0f);
         }
 

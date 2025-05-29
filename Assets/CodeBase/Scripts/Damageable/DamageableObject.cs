@@ -1,3 +1,4 @@
+using CodeBase.Scripts.Characters.Vehicles;
 using System;
 using UnityEngine;
 
@@ -5,8 +6,13 @@ namespace CodeBase.Scripts.Damageable
 {
     public abstract class DamageableObject : MonoBehaviour, IDamageable
     {
-        [field: SerializeField, Min(0f)] public float MaxHealth { get; protected set; }
-        [field: SerializeField, Min(0f)] public float Health { get; protected set; }
+        [Header("Data")]
+        [SerializeField] private UnitParametersDataStorage dataStorage;
+
+        private UnitParametersData Data => dataStorage.UnitData;
+
+        public float MaxHealth => Data.Health;
+        public float Health { get; private set; }
 
         public Transform GetTransform => transform;
         public bool IsDead => Health <= 0f;

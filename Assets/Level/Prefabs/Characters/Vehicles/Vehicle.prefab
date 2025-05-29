@@ -282,15 +282,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f763054e30e20744ca69152e5548e828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dataStorage: {fileID: 11400000, guid: 63e7b28c3f5f3e14d93490e22d1a3b79, type: 2}
   rb: {fileID: 3742499236548187997}
-  acceleration: 25
-  maxSpeed: 10
-  delayBetweenTurns: 10
-  xRange: 1
-  turnDuration: 3
-  maxAllowedXShift: 4
-  maxTurnAngle: 3
-  rotationReturnSpeed: 25
 --- !u!114 &2581085459870669435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,8 +296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c09859e56cab16948863b98430997ebd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <DefaultDamage>k__BackingField: 5
-  <Damage>k__BackingField: 5
+  dataStorage: {fileID: 11400000, guid: c36034901d3c99446ae5cfa32ab3ef13, type: 2}
 --- !u!114 &5591459302574416023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,8 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bed40852519e8ef4284bbe108519b3ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MaxHealth>k__BackingField: 50
-  <Health>k__BackingField: 50
+  dataStorage: {fileID: 11400000, guid: c36034901d3c99446ae5cfa32ab3ef13, type: 2}
 --- !u!114 &7492166880213012535
 MonoBehaviour:
   m_ObjectHideFlags: 0

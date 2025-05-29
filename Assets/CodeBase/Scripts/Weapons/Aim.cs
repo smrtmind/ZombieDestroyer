@@ -4,8 +4,10 @@ namespace CodeBase.Scripts.Weapons
 {
     public class Aim : MonoBehaviour
     {
-        public void Hide() => gameObject.SetActive(false);
+        [SerializeField] private GameObject body;
 
-        public void Show() => gameObject.SetActive(true);
+        public void Hide() => body.SetActive(false);
+
+        public void Show() => body.SetActive(true);
     }
 }

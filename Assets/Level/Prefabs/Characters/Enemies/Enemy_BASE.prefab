@@ -104,8 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a87c2b57f0d305a41a80fac668ecab35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MaxHealth>k__BackingField: 15
-  <Health>k__BackingField: 15
+  dataStorage: {fileID: 11400000, guid: 1af3a051bb9539144bbf84f3542750a4, type: 2}
 --- !u!114 &1759399893799111974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,8 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c09859e56cab16948863b98430997ebd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <DefaultDamage>k__BackingField: 5
-  <Damage>k__BackingField: 5
+  dataStorage: {fileID: 11400000, guid: 1af3a051bb9539144bbf84f3542750a4, type: 2}
 --- !u!114 &3197274765757800709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,6 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageableObject: {fileID: 6080073691325116384}
+  objectPuncher: {fileID: 0}
   emissionController: {fileID: 5009900248593396925}
   damageColor: {r: 1, g: 1, b: 1, a: 1}
   blinkDuration: 0.2
