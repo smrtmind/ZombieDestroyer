@@ -60,7 +60,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   touchController: {fileID: 5641227678447008581}
   pivot: {fileID: 7381743837465139760}
-  maxRotationAngle: 45
+  maxRotationAngle: 35
+  returnDuration: 0.5
 --- !u!114 &6903959749168916800
 MonoBehaviour:
   m_ObjectHideFlags: 0

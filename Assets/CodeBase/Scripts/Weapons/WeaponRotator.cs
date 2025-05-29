@@ -1,4 +1,5 @@
 using CodeBase.Scripts.Service;
+using DG.Tweening;
 using UnityEngine;
 
 namespace CodeBase.Scripts.Weapons
@@ -10,35 +11,98 @@ namespace CodeBase.Scripts.Weapons
 
         [Space]
         [SerializeField, Range(0f, 90f)] private float maxRotationAngle = 45f;
+        [SerializeField, Min(0.1f)] private float returnDuration = 0.5f;
 
-        private Vector3 _defaultForward;
+        private Tween _returnTween;
+
+        private float _startTouchX;
+        private float _startAngle;
+        private bool _isDragging;
 
         private void OnEnable()
         {
-            _defaultForward = pivot.forward;
+            Subscribe();
+
             pivot.localRotation = Quaternion.identity;
+        }
+
+        private void Subscribe()
+        {
+            touchController.OnTouched += OnTouchedHandler;
+            touchController.OnReleased += OnReleasedHandler;
+        }
+
+        private void Unsubscribe()
+        {
+            touchController.OnTouched -= OnTouchedHandler;
+            touchController.OnReleased -= OnReleasedHandler;
+        }
+
+        private void OnTouchedHandler()
+        {
+            _returnTween?.Kill();
+
+            _isDragging = true;
+
+#if UNITY_EDITOR
+            _startTouchX = Input.mousePosition.x;
+#else
+            _startTouchX = Input.GetTouch(0).position.x;
+#endif
+
+            float raw = pivot.localEulerAngles.y;
+            _startAngle = raw > 180f ? raw - 360f : raw;
+        }
+
+        private void OnReleasedHandler()
+        {
+            _isDragging = false;
+
+            ReturnToCenter();
         }
 
         private void Update()
         {
-            RotateTowardsTarget(touchController.TargetPosition);
+            if (!_isDragging) return;
+
+            float currentX;
+#if UNITY_EDITOR
+            currentX = Input.mousePosition.x;
+#else
+            currentX = Input.GetTouch(0).position.x;
+#endif
+            RotateTowards(currentX);
         }
 
-        private void RotateTowardsTarget(Vector3 targetPosition)
+        private void RotateTowards(float currentX)
         {
-            Vector3 direction = targetPosition - pivot.position;
-            direction.y = 0;
+            float deltaX = currentX - _startTouchX;
+            float normalized = deltaX * 2f / Screen.width;
 
-            if (direction == Vector3.zero)
-                return;
+            float angle = Mathf.Clamp(
+                _startAngle + normalized * maxRotationAngle,
+                -maxRotationAngle,
+                +maxRotationAngle
+);
 
-            direction.Normalize();
+            pivot.localRotation = Quaternion.Euler(0f, angle, 0f);
+        }
 
-            float angle = -Vector3.SignedAngle(_defaultForward, direction, Vector3.up);
-            angle = Mathf.Clamp(angle, -maxRotationAngle, maxRotationAngle);
+        private void ReturnToCenter()
+        {
+            _returnTween?.Kill();
+            _returnTween = pivot
+                .DOLocalRotate(Vector3.zero, returnDuration)
+                .SetEase(Ease.OutCubic)
+                .OnKill(() => _returnTween = null)
+                .OnComplete(() => _returnTween = null);
+        }
 
-            Quaternion clampedRotation = Quaternion.AngleAxis(angle, Vector3.up);
-            pivot.localRotation = clampedRotation;
+        private void OnDisable()
+        {
+            Unsubscribe();
+
+            _returnTween?.Kill();
         }
     }
 }
