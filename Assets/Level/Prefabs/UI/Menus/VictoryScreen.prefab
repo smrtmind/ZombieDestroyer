@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2673522375845987285}
   - component: {fileID: 4371876951800772884}
   - component: {fileID: 6823902831943051792}
+  - component: {fileID: 2788387635311286914}
   m_Layer: 0
   m_Name: Text_YouWin
   m_TagString: Untagged
@@ -134,6 +135,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2788387635311286914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4450334721420268657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f34144518027d54db36f5bf722172ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 6823902831943051792}
+  delayBetweenType: 0.05
 --- !u!1 &8808594323584868199
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,6 +160,7 @@ GameObject:
   - component: {fileID: 7867837080726159950}
   - component: {fileID: 2498862701945809462}
   - component: {fileID: 2832348961161995978}
+  - component: {fileID: 2633635767574166642}
   m_Layer: 0
   m_Name: Smile
   m_TagString: Untagged
@@ -209,6 +225,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2633635767574166642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8808594323584868199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b98aa7b8bc8767548a7ae433ce663d2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleOnEnable: 0
+  ease: 27
+  startScale: {x: 0, y: 0, z: 0}
+  endScale: {x: 1, y: 1, z: 1}
+  scaleDuration: 0.5
 --- !u!1001 &3434960411848061075
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -485,7 +518,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8262072186590593670, guid: 164d1ca59f9d0fe40be1f156215c3591,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1670118973105179495}
+      addedObject: {fileID: 5834015019316252429}
   m_SourcePrefab: {fileID: 100100000, guid: 164d1ca59f9d0fe40be1f156215c3591, type: 3}
 --- !u!224 &2042589436844870498 stripped
 RectTransform:
@@ -499,7 +532,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6115437671589406607}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1670118973105179495
+--- !u!114 &5834015019316252429
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -508,7 +541,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2771579402947847433}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2add41b50e10d9b478f577f3643a7085, type: 3}
+  m_Script: {fileID: 11500000, guid: df476539fdb32594792543bc9df2456f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 7463118919568143234}
@@ -519,6 +552,8 @@ MonoBehaviour:
   showAlpha: 1
   hideAlpha: 0
   <State>k__BackingField: 3
+  objectScaler: {fileID: 2633635767574166642}
+  typeText: {fileID: 2788387635311286914}
 --- !u!225 &7463118919568143234 stripped
 CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 3696387895787770893, guid: 164d1ca59f9d0fe40be1f156215c3591,
