@@ -33,20 +33,34 @@ namespace CodeBase.Scripts.Utils
 
         private void OnEnable()
         {
+            if (!_initialized) return;
+            
             ResetToDefault();
         }
 
         private void Init()
         {
-            if (_initialized) return;
-
             if (renderers == null || renderers.Length == 0)
             {
                 enabled = false;
                 return;
             }
 
-            DetectCorrectPropertyName();
+            Renderer firstValid = null;
+            foreach (var r in renderers)
+                if (r != null)
+                {
+                    firstValid = r;
+                    break;
+                }
+
+            if (firstValid == null)
+            {
+                enabled = false;
+                return;
+            }
+
+            DetectCorrectPropertyName(firstValid);
 
             if (!_hasEmissionProp)
             {
@@ -60,11 +74,11 @@ namespace CodeBase.Scripts.Utils
             _initialized = true;
         }
 
-        private void DetectCorrectPropertyName()
+        private void DetectCorrectPropertyName(Renderer validRenderer)
         {
             foreach (var name in k_PropNames)
             {
-                if (renderers[0].sharedMaterial.HasProperty(name))
+                if (validRenderer.sharedMaterial.HasProperty(name))
                 {
                     _emissionID = Shader.PropertyToID(name);
                     _hasEmissionProp = true;
@@ -84,6 +98,8 @@ namespace CodeBase.Scripts.Utils
         {
             foreach (var r in renderers)
             {
+                if (r == null) continue;
+
                 var mat = r.material;
                 mat.EnableKeyword(k_EmissionKeyword);
 
@@ -100,18 +116,27 @@ namespace CodeBase.Scripts.Utils
 
         public void ChangeEmission(Color c)
         {
+            if (!_initialized || _blocks == null) return;
+
             foreach (var r in renderers)
             {
-                _blocks[r].SetColor(_emissionID, c);
-                r.SetPropertyBlock(_blocks[r]);
+                if (r == null) continue;
+                if (!_blocks.TryGetValue(r, out var block)) continue;
+
+                block.SetColor(_emissionID, c);
+                r.SetPropertyBlock(block);
                 _current[r] = c;
             }
         }
 
         public void ChangeEmissionSmooth(Color target, float duration)
         {
+            if (!_initialized || _blocks == null) return;
+
             foreach (var r in renderers)
             {
+                if (r == null) continue;
+
                 if (_tweens.TryGetValue(r, out var old)) old.Kill();
 
                 _tweens[r] = DOTween.To(
@@ -130,10 +155,21 @@ namespace CodeBase.Scripts.Utils
 
         public void FadeEmissionOut(Action onComplete = null)
         {
-            int remaining = renderers.Length;
+            if (!_initialized || _blocks == null) return;
+
+            int remaining = 0;
+            foreach (var r in renderers)
+                if (r != null) remaining++;
+
+            if (remaining == 0)
+            {
+                onComplete?.Invoke();
+                return;
+            }
 
             foreach (var r in renderers)
             {
+                if (r == null) continue;
                 if (_tweens.TryGetValue(r, out var old)) old.Kill();
 
                 _tweens[r] = DOTween.To(
@@ -144,12 +180,13 @@ namespace CodeBase.Scripts.Utils
                         _blocks[r].SetColor(_emissionID, x);
                         r.SetPropertyBlock(_blocks[r]);
                     },
-                    Color.black,
+                    defaultEmission,
                     fadeDuration
                 )
                 .OnComplete(() =>
                 {
-                    if (--remaining == 0)
+                    remaining--;
+                    if (remaining <= 0)
                         onComplete?.Invoke();
                 });
             }
@@ -157,9 +194,13 @@ namespace CodeBase.Scripts.Utils
 
         public void ResetToDefault()
         {
+            if (!_initialized || _blocks == null) return;
+
             foreach (var r in renderers)
             {
-                if (_tweens.TryGetValue(r, out var old)) old.Kill();
+                if (r == null) continue;
+
+                if (_tweens != null && _tweens.TryGetValue(r, out var old)) old.Kill();
 
                 _blocks[r].SetColor(_emissionID, defaultEmission);
                 r.SetPropertyBlock(_blocks[r]);
@@ -169,6 +210,8 @@ namespace CodeBase.Scripts.Utils
 
         private void ClearAllTweens()
         {
+            if (_tweens == null) return;
+
             foreach (var tween in _tweens.Values)
                 tween?.Kill();
         }
@@ -182,9 +225,9 @@ namespace CodeBase.Scripts.Utils
         {
             ClearAllTweens();
 
-            _blocks.Clear();
-            _tweens.Clear();
-            _current.Clear();
+            _blocks?.Clear();
+            _tweens?.Clear();
+            _current?.Clear();
         }
     }
 }

@@ -11,7 +11,7 @@ namespace CodeBase.Scripts.Characters.Enemies
     public abstract class Enemy : PoolableMonoBehaviour
     {
         [Header("Components")]
-        [SerializeField] private PoolableParticle dieFxPrefab;
+        [SerializeField] private PoolableParticle[] dieFxPrefabs;
         [SerializeField] private Detector detector;
         [SerializeField] private EnemyAI enemyAi;
         [SerializeField] protected DamageableObject damageableObject;
@@ -58,10 +58,13 @@ namespace CodeBase.Scripts.Characters.Enemies
 
         private void SpawnFx()
         {
-            if (dieFxPrefab == null) return;
+            if (dieFxPrefabs == null || dieFxPrefabs.Length == 0) return;
 
-            var dieFx = _objectPool.Get(dieFxPrefab);
-            dieFx.transform.position = transform.position;
+            foreach (var fx in dieFxPrefabs)
+            {
+                var dieFx = _objectPool.Get(fx);
+                dieFx.transform.position = transform.position;
+            }
         }
 
         private void OnDisable()

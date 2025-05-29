@@ -20,6 +20,7 @@ namespace CodeBase.Scripts.Characters.Vehicles
         [SerializeField] private float maxTurnAngle = 25f;
         [SerializeField, Min(0.1f)] private float rotationReturnSpeed = 5f;
 
+        private bool _canMove;
         private float _nextTurnTime;
         private float _startTurnTime;
         private float _startX;
@@ -34,6 +35,8 @@ namespace CodeBase.Scripts.Characters.Vehicles
 
         private void FixedUpdate()
         {
+            if (!_canMove) return;
+
             MoveForward();
             UpdateTurn();
             ApplyTurnRotation();
@@ -65,7 +68,6 @@ namespace CodeBase.Scripts.Characters.Vehicles
             if (_isTurning)
             {
                 float t = (Time.time - _startTurnTime) / turnDuration;
-
                 if (t >= 1f)
                 {
                     t = 1f;
@@ -116,6 +118,21 @@ namespace CodeBase.Scripts.Characters.Vehicles
             float currentY = transform.eulerAngles.y;
             float newY = Mathf.LerpAngle(currentY, targetYAngle, rotationReturnSpeed * Time.fixedDeltaTime);
             transform.rotation = Quaternion.Euler(0f, newY, 0f);
+        }
+
+        public void StartMovement()
+        {
+            if (_canMove) return;
+
+            _canMove = true;
+        }
+
+        public void StopMovement()
+        {
+            if (!_canMove) return;
+
+            _canMove = false;
+            rb.velocity = Vector3.zero;
         }
     }
 }

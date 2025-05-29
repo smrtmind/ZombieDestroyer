@@ -56,7 +56,7 @@ namespace CodeBase.Scripts.Detectors
             _canShoot = true;
         }
 
-        private void StopShoot()
+        public void StopShoot()
         {
             if (!_canShoot) return;
 

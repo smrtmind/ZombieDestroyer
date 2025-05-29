@@ -82,8 +82,7 @@ namespace CodeBase.Scripts.Weapons
             float angle = Mathf.Clamp(
                 _startAngle + normalized * maxRotationAngle,
                 -maxRotationAngle,
-                +maxRotationAngle
-);
+                +maxRotationAngle);
 
             pivot.localRotation = Quaternion.Euler(0f, angle, 0f);
         }

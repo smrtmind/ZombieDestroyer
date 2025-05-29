@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4371876951800772884}
   - component: {fileID: 6823902831943051792}
   m_Layer: 0
-  m_Name: Text_Victory
+  m_Name: Text_YouWin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Victory
+  m_text: You win
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 920e4f77beffc7148b87dd5f520347ec, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: dbaa2d7c5fd2173409daa98f790fad59, type: 2}
@@ -374,7 +374,7 @@ PrefabInstance:
     - target: {fileID: 8497260988087905594, guid: 164d1ca59f9d0fe40be1f156215c3591,
         type: 3}
       propertyPath: m_Color.a
-      value: 0.9411765
+      value: 0.27450982
       objectReference: {fileID: 0}
     - target: {fileID: 8497260988087905594, guid: 164d1ca59f9d0fe40be1f156215c3591,
         type: 3}

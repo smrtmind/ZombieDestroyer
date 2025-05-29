@@ -1,4 +1,5 @@
 using CodeBase.Scripts.Damageable;
+using CodeBase.Scripts.Detectors;
 using CodeBase.Scripts.Managers;
 using CodeBase.Scripts.Service;
 using CodeBase.Scripts.Weapons;
@@ -11,10 +12,16 @@ namespace CodeBase.Scripts.Characters.Vehicles
 {
     public class Vehicle : PoolableMonoBehaviour
     {
+        [Header("Components")]
         [SerializeField] private PoolableParticle dieFxPrefab;
+        [SerializeField] private GameObject fxDieFlameContainer;
+        [SerializeField] private GameObject fxSmokeContainer;
+
+        [Space]
         [SerializeField] private VehicleMovement vehicleMovement;
         [SerializeField] private WeaponRotator weaponRotator;
         [SerializeField] private TouchController touchController;
+        [SerializeField] private RangeAttackControllerAuto rangeAttackControllerAuto;
         [field: SerializeField] public VehicleDamageableObject DamageableObject { get; private set; }
 
         private ObjectPool _objectPool;
@@ -28,40 +35,47 @@ namespace CodeBase.Scripts.Characters.Vehicles
         private void OnEnable()
         {
             Subscribe();
-
-            vehicleMovement.enabled = false;
-            weaponRotator.enabled = false;
-            touchController.enabled = false;
         }
 
         private void Subscribe()
         {
             GameManager.OnAfterStateChanged += OnAfterStateChangedHandler;
-            DamageableObject.OnDied += OnDiedHandler;
         }
 
         private void Unsubscribe()
         {
             GameManager.OnAfterStateChanged -= OnAfterStateChangedHandler;
-            DamageableObject.OnDied -= OnDiedHandler;
         }
 
         private void OnAfterStateChangedHandler(GameState state)
         {
-            if (state != GameState.Gameplay) return;
+            switch (state)
+            {
+                case GameState.Gameplay:
+                    vehicleMovement.StartMovement();
+                    break;
 
-            vehicleMovement.enabled = true;
-            weaponRotator.enabled = true;
-            touchController.enabled = true;
+                case GameState.Victory:
+                    StopLiveSimulation();
+                    break;
+
+                case GameState.Defeat:
+                    StopLiveSimulation();
+                    SpawnFx();
+
+                    fxSmokeContainer.SetActive(false);
+                    fxDieFlameContainer.SetActive(true);
+                    break;
+            }
         }
 
-        private void OnDiedHandler()
+        private void StopLiveSimulation()
         {
-            vehicleMovement.enabled = false;
+            vehicleMovement.StopMovement();
+            rangeAttackControllerAuto.StopShoot();
+
             weaponRotator.enabled = false;
             touchController.enabled = false;
-
-            SpawnFx();
         }
 
         private void SpawnFx()
