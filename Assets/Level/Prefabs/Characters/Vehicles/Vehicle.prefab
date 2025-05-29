@@ -119,6 +119,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4513693941154204167}
+  - component: {fileID: 6826834552699167997}
   m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
@@ -143,6 +144,20 @@ Transform:
   - {fileID: 7381743837465139760}
   m_Father: {fileID: 7930278594772190113}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &6826834552699167997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053724573257776650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccbccf329521a8e408987dd265877a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  additionalScale: {x: 0.1, y: 0.1, z: 0.1}
+  scaleDuration: 0.2
 --- !u!1 &1801607678570064664
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,7 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bed40852519e8ef4284bbe108519b3ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MaxHealth>k__BackingField: 5
+  <MaxHealth>k__BackingField: 50
   <Health>k__BackingField: 50
 --- !u!114 &7492166880213012535
 MonoBehaviour:
@@ -317,6 +332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageableObject: {fileID: 5591459302574416023}
+  objectPuncher: {fileID: 6826834552699167997}
   emissionController: {fileID: 3765212268222787197}
   damageColor: {r: 1, g: 0, b: 0, a: 1}
   blinkDuration: 0.2

@@ -91,7 +91,7 @@ PrefabInstance:
     - target: {fileID: 1698767245930177429, guid: 0ed62f9ccd6465b4591c007003ab2247,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 380
+      value: 185
       objectReference: {fileID: 0}
     - target: {fileID: 1698767245930177429, guid: 0ed62f9ccd6465b4591c007003ab2247,
         type: 3}
@@ -124,18 +124,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 4705934462874292958}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6418889796286233695 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1754904357773586049, guid: 0ed62f9ccd6465b4591c007003ab2247,
-    type: 3}
-  m_PrefabInstance: {fileID: 4705934462874292958}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6115437671589406607
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -314,7 +302,6 @@ MonoBehaviour:
   showAlpha: 1
   hideAlpha: 0
   <State>k__BackingField: 1
-  startButton: {fileID: 6418889796286233695}
 --- !u!225 &7463118919568143234 stripped
 CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 3696387895787770893, guid: 164d1ca59f9d0fe40be1f156215c3591,

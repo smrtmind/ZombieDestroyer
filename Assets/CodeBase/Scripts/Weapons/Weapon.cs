@@ -1,4 +1,5 @@
 using CodeBase.Scripts.Projectiles;
+using CodeBase.Scripts.Utils;
 using Unavinar.Pooling;
 using UnityEngine;
 using Zenject;
@@ -8,6 +9,7 @@ namespace CodeBase.Scripts.Weapons
     public abstract class Weapon : MonoBehaviour
     {
         [Header("Components")]
+        [SerializeField] private ObjectPuncher objectPuncher;
         [SerializeField] protected Transform shootPoint;
         [SerializeField] private Projectile projectile;
         [SerializeField] private PoolableParticle shootFx;
@@ -34,6 +36,7 @@ namespace CodeBase.Scripts.Weapons
 
         public virtual void Shoot(Vector3 targetPosition, float damage)
         {
+            objectPuncher?.Punch();
             ShootFx();
         }
 
@@ -52,6 +55,7 @@ namespace CodeBase.Scripts.Weapons
             if (this.shootFx == null) return;
 
             var shootFx = _objectPool.Get(this.shootFx);
+            shootFx.transform.SetParent(shootPoint);
             shootFx.transform.position = shootPoint.position;
         }
 

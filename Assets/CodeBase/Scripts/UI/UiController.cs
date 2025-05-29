@@ -38,9 +38,12 @@ namespace CodeBase.Scripts.UI
                     break;
 
                 case GameState.Gameplay:
+                    SwitchElementImmediatelyTo(GetMenu(gameState));
+                    break;
+
                 case GameState.Victory:
                 case GameState.Defeat:
-                    SwitchElementImmediatelyTo(GetMenu(gameState));
+                    SwitchElementSmoothlyTo(GetMenu(gameState));
                     break;
             }
         }

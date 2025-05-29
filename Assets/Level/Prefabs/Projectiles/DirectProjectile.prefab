@@ -16,17 +16,17 @@ PrefabInstance:
     - target: {fileID: 3139769919294112130, guid: ce436d9c483aa144ea678adfe288a1aa,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.4999999
+      value: 1.7500001
       objectReference: {fileID: 0}
     - target: {fileID: 3139769919294112130, guid: ce436d9c483aa144ea678adfe288a1aa,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.4999999
+      value: 1.7500001
       objectReference: {fileID: 0}
     - target: {fileID: 3139769919294112130, guid: ce436d9c483aa144ea678adfe288a1aa,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.4999999
+      value: 1.7500001
       objectReference: {fileID: 0}
     - target: {fileID: 3139769919294112130, guid: ce436d9c483aa144ea678adfe288a1aa,
         type: 3}
@@ -336,7 +336,7 @@ MonoBehaviour:
   triggerObserver: {fileID: 2855575324688329882}
   fxOnContact: {fileID: 7291676800845056513, guid: b127b59fe285f844a93957379e6e3416,
     type: 3}
-  speed: 50
+  speed: 65
   targetReachTolerance: 0.01
 --- !u!4 &7518023199248023268 stripped
 Transform:

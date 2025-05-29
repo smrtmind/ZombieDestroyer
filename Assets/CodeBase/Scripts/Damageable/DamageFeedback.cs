@@ -10,6 +10,7 @@ namespace CodeBase.Scripts.Damageable
     public class DamageFeedback : MonoBehaviour
     {
         [SerializeField] private DamageableObject damageableObject;
+        [SerializeField] private ObjectPuncher objectPuncher;
         [SerializeField] private EmissionController emissionController;
 
         [Space]
@@ -34,6 +35,8 @@ namespace CodeBase.Scripts.Damageable
 
         private void OnDamagedHandler()
         {
+            objectPuncher?.Punch();
+
             _blinkCts?.Cancel();
             _blinkCts?.Dispose();
             _blinkCts = new CancellationTokenSource();
