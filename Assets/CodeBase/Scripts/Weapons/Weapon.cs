@@ -9,6 +9,7 @@ namespace CodeBase.Scripts.Weapons
     public abstract class Weapon : MonoBehaviour
     {
         [Header("Components")]
+        [SerializeField] private Aim aim;
         [SerializeField] private ObjectPuncher objectPuncher;
         [SerializeField] protected Transform shootPoint;
         [SerializeField] private Projectile projectile;
@@ -28,6 +29,7 @@ namespace CodeBase.Scripts.Weapons
         protected virtual void OnEnable()
         {
             Subscribe();
+            HideAim();
         }
 
         protected virtual void Subscribe() { }
@@ -58,6 +60,10 @@ namespace CodeBase.Scripts.Weapons
             shootFx.transform.SetParent(shootPoint);
             shootFx.transform.position = shootPoint.position;
         }
+
+        public void ShowAim() => aim?.Show();
+
+        public void HideAim() => aim?.Hide();
 
         protected virtual void OnDisable()
         {

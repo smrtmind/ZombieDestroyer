@@ -53,6 +53,7 @@ namespace CodeBase.Scripts.Detectors
         {
             if (_canShoot) return;
 
+            weapon.ShowAim();
             _canShoot = true;
         }
 
@@ -60,6 +61,7 @@ namespace CodeBase.Scripts.Detectors
         {
             if (!_canShoot) return;
 
+            weapon.HideAim();
             _canShoot = false;
         }
 
